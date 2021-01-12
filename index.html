@@ -7,6 +7,27 @@
 </head>
 <body>
 <script>
+  const abbanami = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "A", "B", "B", "A"];
+  const pressedKeys = [];
+  let iterator = 0;
+  function logKey(e){
+    if(e.key === abbanami[iterator]){
+      pressedKeys.push(e.key);
+      iterator++;
+      if(abbanamiCheck()){
+        console.log("Congrats! You found the secret to life...Take a Chance");
+        cornify_add();
+      };
+    }else{
+      pressedKeys.length = 0;
+      iterator = 0;
+    }
+  }
+  function abbanamiCheck(){
+    return abbanami.join("") === pressedKeys.join("")? true: false;
+  }
+
+  window.addEventListener("keyup", logKey);
 </script>
 </body>
 </html>
